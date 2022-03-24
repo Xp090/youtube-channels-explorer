@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="app-toolbar mat-elevation-z4">
+  <a routerLink="/">
+    <img class="app-logo" src="http://www.inmobly.com/wp-content/uploads/2016/04/logo_Dark-1.png">
+  </a>
+  <span class="fill-empty-space"></span>
+  <!--  hide when not in the home page -->
+  <div *ngIf="router.url == '/'" [@fadeInOut] class="col-lg-4">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control"
+               placeholder="Channel username or id" [(ngModel)]="channelUsernameOrId" />
+        <span [ngClass]="{disabled:channelUsernameOrId.trim().length == 0}"
+              (click)="onRetrieveChannelVideosFromUsernameOrId()"
+              class="input-group-addon btn">
+                        <i class="fa fa-arrow-right"></i>
+                    </span>
+
+      </div>
+    </div>
+  </div>
+
+  <span class="fill-empty-space"></span>
+
+  <!--  hide when not in the home page -->
+  <div *ngIf="router.url == '/'" [@fadeInOut] class="toolbar-search-container">
+    <mat-form-field class="app-toolbar-input-search" floatLabel="never">
+      <mat-icon matPrefix class="toolbar-search-icon">search</mat-icon>
+      <input #searchInput name="searchInput" matInput type="text" placeholder="Search by video title">
+    </mat-form-field>
+  </div>
+
+
+</mat-toolbar>

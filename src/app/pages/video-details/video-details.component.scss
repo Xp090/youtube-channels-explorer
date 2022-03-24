@@ -1,0 +1,92 @@
+@import '../../../variables';
+
+.rating-bar {
+  margin-left: 8px;
+}
+
+.video-big-thumbnail {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.video-duration-text {
+  font-size: 14px;
+  margin: 0 4px;
+}
+
+.video-stat {
+  color: #404040;
+}
+
+.video-stat-icon {
+  margin-right: 4px;
+  margin-left: 24px;
+}
+
+
+
+.video-detail-list-item {
+  padding: 0 32px !important;
+  box-sizing: border-box !important;
+  height: unset !important;
+}
+
+
+.video-detail-list-divider{
+  margin: 16px 0;
+}
+
+.video-publish-date{
+  color : $app-accent-color;
+}
+
+.video-stat-container{
+  display: inline-flex;
+  padding-bottom: 8px;
+}
+
+.video-description{
+  line-height: 22px;
+  white-space: pre-wrap;
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+.videos-update-attribute-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  ::ng-deep .mat-progress-bar-fill::after{
+    background-color: $app-accent-color;
+  }
+  ::ng-deep .mat-progress-bar-buffer{
+    background-color: #e9c5c5;
+  }
+}
+
+
+.mat-list-item-content > h1, h2, h3, h4, h5, h6,p {
+  margin: 0;
+  font-family: CambridgeRoundW01-Regular, Arial, sans-serif ;
+}
+
+
+
+//override ngx-rating-bar styles
+
+::ng-deep .br-unit:after {
+  color: rgba(230, 7, 6, 0.15) !important;
+}
+
+::ng-deep .br-selected:after {
+  color: #E60706 !important;
+}
+
+::ng-deep .br-active:after {
+  color: #E60706 !important;
+}
+
+::ng-deep .br{
+  margin: 0 !important;
+}

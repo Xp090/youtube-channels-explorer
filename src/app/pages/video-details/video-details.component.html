@@ -1,0 +1,81 @@
+<mat-progress-bar [@fadeInOut] *ngIf="isUpdatingVideoAttributes" class="videos-update-attribute-progress-bar" mode="query"></mat-progress-bar>
+<div *ngIf="!isError"  class="mat-elevation-z4">
+  <div *ngIf="videoDetails">
+    <img class="video-big-thumbnail" [src]="videoDetails.thumbnail"/>
+    <mat-list>
+      <mat-list-item class="video-detail-list-item">
+        <h3>{{videoDetails.title}}</h3>
+        <span class="fill-empty-space"></span>
+        <button  mat-stroked-button
+                 [ngClass]="{
+              'toggle-button-unchecked': !videoDetails.isFavorite,
+               'toggle-button-checked': videoDetails.isFavorite}"
+                 (click)="onToggleFavorites(videoDetails)"> {{videoDetails.isFavorite? 'Added to favorite' : 'Add to favorite'}}
+        </button>
+      </mat-list-item>
+      <mat-divider class="video-detail-list-divider"></mat-divider>
+      <mat-list-item class="video-detail-list-item">
+        <h4>Rate Now</h4>
+        <bar-rating class="rating-bar"
+                    [(rate)]="videoDetails.rating"
+                    [max]="5" [theme]="'fontawesome'"
+                    (rateChange)="onRatingUpdate(videoDetails)"></bar-rating>
+        <span class="fill-empty-space"></span>
+        <h4>Duration <span class="video-duration-text">{{videoDetails.duration}}</span></h4>
+        <span class="fill-empty-space"></span>
+        <div class="video-stat-container">
+          <h5 class="video-stat">
+            <mat-icon class="mat-icon-align-fix video-stat-icon">remove_red_eye</mat-icon>
+            {{videoDetails.views | number}}</h5>
+          <h5 class="video-stat">
+            <mat-icon class="mat-icon-align-fix video-stat-icon">thumb_up</mat-icon>
+            {{videoDetails.likes | number}}</h5>
+        </div>
+      </mat-list-item>
+      <mat-divider class="video-detail-list-divider"></mat-divider>
+      <mat-list-item class="video-detail-list-item">
+        <div>
+          <h5 class="video-publish-date">Published at {{videoDetails.publishDate | date: 'MMM d, yyyy'}}</h5>
+          <h5 class="video-description">{{videoDetails.description}}</h5>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+
+  <div *ngIf="!videoDetails" >
+    <content-loader
+      height="240"
+      width="1330"
+      speed="2"
+      primaryColor="#f3f3f3"
+      secondaryColor="#ecebeb"
+    >
+      <svg:rect x="0" y="0" rx="5" ry="5" width="1330" height="240" />
+
+    </content-loader>
+    <content-loader
+      height="240"
+      width="1330"
+      speed="2"
+      primaryColor="#f3f3f3"
+      secondaryColor="#ecebeb"
+    >
+      <svg:rect x="45" y="9" rx="3" ry="3" width="258" height="32" />
+      <svg:rect x="46" y="83" rx="3" ry="3" width="184" height="24" />
+      <svg:rect x="616" y="83" rx="3" ry="3" width="106" height="24" />
+      <svg:rect x="1220" y="80" rx="3" ry="3" width="73" height="32" />
+      <svg:rect x="1140" y="80" rx="3" ry="3" width="73" height="32" />
+      <svg:rect x="1152" y="9" rx="3" ry="3" width="124" height="38" />
+      <svg:rect x="47" y="140" rx="3" ry="3" width="153" height="22" />
+      <svg:rect x="47" y="180" rx="3" ry="3" width="148" height="10" />
+      <svg:rect x="47" y="220" rx="3" ry="3" width="228" height="10" />
+      <svg:rect x="47" y="200" rx="3" ry="3" width="188" height="10" />
+    </content-loader>
+  </div>
+
+</div>
+
+<page-error-message [errorCondition]="isError" (onRetry)="onRetry()" ></page-error-message>
+
+

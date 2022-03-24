@@ -1,0 +1,10 @@
+<div *ngIf="errorCondition" class="error-container">
+  <i class="material-icons error-icon">
+    error_outline
+  </i>
+
+  <h3>
+    {{message}}
+  </h3>
+  <button mat-raised-button (click)="retry()" color="primary">Retry</button>
+</div>
